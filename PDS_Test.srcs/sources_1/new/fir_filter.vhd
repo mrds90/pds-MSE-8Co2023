@@ -2,8 +2,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.numeric_std.all;
 
-entity MiComponente is
+entity fir_core is
   generic (
     N : positive := 2   -- Tamaño configurable
   );
@@ -16,9 +17,9 @@ entity MiComponente is
     salida : out STD_LOGIC_VECTOR(N-1 downto 0);      -- Salida del componente
     salida_sin_delay : out STD_LOGIC_VECTOR(N-1 downto 0)      -- Salida del componente
   );
-end MiComponente;
+end fir_core;
 
-architecture Behavioral of MiComponente is
+architecture Behavioral of fir_core is
   signal multiplicacion1 : STD_LOGIC_VECTOR(2 * N - 1 downto 0);
   signal suma : STD_LOGIC_VECTOR(N - 1 downto 0);
   signal resultado : STD_LOGIC_VECTOR(N-1 downto 0);
@@ -26,21 +27,20 @@ architecture Behavioral of MiComponente is
 begin
   -- Multiplicación 1
   multiplicacion1 <= entrada * coeficiente;
-
+  
   -- Multiplicación 2
   suma <= multiplicacion1(2 * N - 1 downto N) + sumando;
 
   -- Resultado
-  resultado <= suma;
+
+  resultado <= (others => '0') when rst = '1' else suma;
   
   salida_sin_delay <= resultado;
 
   -- Flip-flop para almacenar el resultado
   process (clk, rst)
   begin
-    if rst = '1' then
-      flipflop_salida <= (others => '0');
-    elsif rising_edge(clk) then
+    if rising_edge(clk) then
       flipflop_salida <= resultado;
     end if;
   end process;

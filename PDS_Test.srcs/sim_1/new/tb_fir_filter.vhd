@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -36,9 +37,9 @@ entity tb_fir_filter is
 end tb_fir_filter;
 
 architecture arch of tb_fir_filter is
-    component MiComponente is
+    component fir_core is
       generic (
-        N : positive := 2   -- Tamaño configurable
+        N : positive := 4   -- Tamaño configurable
       );
       Port (
         clk : in STD_LOGIC;           -- Reloj
@@ -51,22 +52,21 @@ architecture arch of tb_fir_filter is
       );
 end component;
 
-constant N_tb : natural := 2;
+constant N_tb : natural := 4;
 
 signal clk_s    : STD_LOGIC := '0';
 signal rst_s    : STD_LOGIC;
-signal coef_s   : STD_LOGIC_VECTOR(N_tb-1 downto 0) := "10";
+signal coef_s   : STD_LOGIC_VECTOR(N_tb-1 downto 0);
 signal in_s     : STD_LOGIC_VECTOR(N_tb-1 downto 0);
-signal sum_s    : STD_LOGIC_VECTOR(N_tb-1 downto 0) := "00";
+signal sum_s    : STD_LOGIC_VECTOR(N_tb-1 downto 0);
 signal outd_s   : STD_LOGIC_VECTOR(N_tb-1 downto 0);
 signal outs_s   : STD_LOGIC_VECTOR(N_tb-1 downto 0);
-
 
 begin
 
 clk_s <= not clk_s after 10ns;
 
-DUT: MiComponente 
+DUT: fir_core 
 
 generic map(
     N => N_tb
@@ -82,10 +82,26 @@ port map(
     salida_sin_delay    => outs_s
 );
 
+STIMULI:
 process
-    begin
-        
-    
-    end process;
+begin
+report("Starting simulation");
+coef_s <=  std_logic_vector(to_signed (8, N_tb));
+sum_s  <=  std_logic_vector(to_signed (2, N_tb));
+rst_s <= '1';
+for i in 0 to 5 loop
+    wait until rising_edge(clk_s);
+end loop;
+rst_s <= '0';
+
+for i in 1 to 15 loop
+    in_s <= std_logic_vector(to_unsigned(i,N_tb));
+    if (i > 9) then
+        rst_s <= '1';
+    end if;
+    wait until rising_edge(clk_s);
+end loop;
+
+end process;
 
 end arch;

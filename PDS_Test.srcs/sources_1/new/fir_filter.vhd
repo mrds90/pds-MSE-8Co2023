@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+--use IEEE.STD_LOGIC_ARITH.ALL;
+--use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.numeric_std.all;
 
 entity fir_core is
@@ -15,7 +15,9 @@ entity fir_core is
     sumando : in STD_LOGIC_VECTOR(N-1 downto 0);     -- Sumando
     coeficiente : in STD_LOGIC_VECTOR(N-1 downto 0); -- Coeficiente
     salida : out STD_LOGIC_VECTOR(N-1 downto 0);      -- Salida del componente
-    salida_sin_delay : out STD_LOGIC_VECTOR(N-1 downto 0)      -- Salida del componente
+    salida_sin_delay : out STD_LOGIC_VECTOR(N-1 downto 0);      -- Salida del componente
+    salida_mul : out STD_LOGIC_VECTOR(2 * N - 1 downto 0);
+    salida_sum : out STD_LOGIC_VECTOR(N - 1 downto 0)
   );
 end fir_core;
 
@@ -26,11 +28,11 @@ architecture Behavioral of fir_core is
   signal flipflop_salida : STD_LOGIC_VECTOR(N-1 downto 0) := (others => '0');
 begin
   -- Multiplicación 1
-  multiplicacion1 <= entrada * coeficiente;
-  
+  multiplicacion1 <= STD_LOGIC_VECTOR(SIGNED(entrada) * SIGNED(coeficiente));
+  salida_mul <= multiplicacion1;
   -- Multiplicación 2
-  suma <= multiplicacion1(2 * N - 1 downto N) + sumando;
-
+  suma <= STD_LOGIC_VECTOR(SIGNED(multiplicacion1(2*N - 2 downto N-1)) + SIGNED(sumando));
+  salida_sum <= suma;
   -- Resultado
 
   resultado <= (others => '0') when rst = '1' else suma;

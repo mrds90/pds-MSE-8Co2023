@@ -3,8 +3,6 @@
   <File Type="PA-TCL" Name="MiComponente.tcl"/>
   <File Type="REPORTS-TCL" Name="MiComponente_reports.tcl"/>
   <File Type="RDS-RDS" Name="MiComponente.vds"/>
-  <File Type="RDS-UTIL" Name="MiComponente_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="MiComponente_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="MiComponente.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>

@@ -48,7 +48,9 @@ architecture arch of tb_fir_filter is
         sumando : in STD_LOGIC_VECTOR(N-1 downto 0);        -- Sumando
         coeficiente : in STD_LOGIC_VECTOR(N-1 downto 0);    -- Coeficiente
         salida : out STD_LOGIC_VECTOR(N-1 downto 0);        -- Salida del componente
-        salida_sin_delay : out STD_LOGIC_VECTOR(N-1 downto 0)      -- Salida del componente
+        salida_sin_delay : out STD_LOGIC_VECTOR(N-1 downto 0);      -- Salida del componente
+        salida_mul : out STD_LOGIC_VECTOR(2 * N - 1 downto 0);
+        salida_sum : out STD_LOGIC_VECTOR(N - 1 downto 0)
       );
 end component;
 
@@ -61,6 +63,9 @@ signal in_s     : STD_LOGIC_VECTOR(N_tb-1 downto 0);
 signal sum_s    : STD_LOGIC_VECTOR(N_tb-1 downto 0);
 signal outd_s   : STD_LOGIC_VECTOR(N_tb-1 downto 0);
 signal outs_s   : STD_LOGIC_VECTOR(N_tb-1 downto 0);
+signal outmul_s   : STD_LOGIC_VECTOR(2*N_tb-1 downto 0);
+signal outsum_s   : STD_LOGIC_VECTOR(N_tb-1 downto 0);
+
 
 begin
 
@@ -79,7 +84,9 @@ port map(
     sumando             => sum_s,
     coeficiente         => coef_s,
     salida              => outd_s,
-    salida_sin_delay    => outs_s
+    salida_sin_delay    => outs_s,
+    salida_mul          => outmul_s,
+    salida_sum          => outsum_s
 );
 
 STIMULI:

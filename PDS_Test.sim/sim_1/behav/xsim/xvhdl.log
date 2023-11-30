@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "D:/PersonalCloud/MSE/PDS/TP_Final/pds-MSE-8Co2023/PDS_Test.srcs/sources_1/new/fir_filter.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'fir_core'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.srcs/sim_1/new/tb_fir_filter.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_fir_filter'

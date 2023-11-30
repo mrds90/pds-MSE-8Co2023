@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1699829140">
-  <File Type="PA-TCL" Name="MiComponente.tcl"/>
   <File Type="REPORTS-TCL" Name="MiComponente_reports.tcl"/>
-  <File Type="RDS-RDS" Name="MiComponente.vds"/>
+  <File Type="PA-TCL" Name="MiComponente.tcl"/>
   <File Type="RDS-DCP" Name="MiComponente.dcp"/>
+  <File Type="RDS-RDS" Name="MiComponente.vds"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/fir_filter.vhd">

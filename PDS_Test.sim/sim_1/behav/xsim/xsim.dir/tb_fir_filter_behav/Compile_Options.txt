@@ -1,1 +1,1 @@
--wto "5ac200cd01f64161a25107ee418afd18" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "tb_fir_filter_behav" "xil_defaultlib.tb_fir_filter" -log "elaborate.log" 
+-wto "5ac200cd01f64161a25107ee418afd18" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "tb_fir_filter_behav" "xil_defaultlib.tb_fir_filter" -log "elaborate.log" 

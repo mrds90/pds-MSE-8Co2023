@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Nov 26 20:30:17 2023
+# Process ID: 15165
+# Current directory: /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.sim/sim_1/behav/xsim
+# Command line: wbtcv -mode batch -source /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.sim/sim_1/behav/xsim/xsim.dir/tb_fir_filter_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.sim/sim_1/behav/xsim/webtalk.jou
+#-----------------------------------------------------------
+source /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.sim/sim_1/behav/xsim/xsim.dir/tb_fir_filter_behav/webtalk/xsim_webtalk.tcl -notrace

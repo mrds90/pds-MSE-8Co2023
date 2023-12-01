@@ -1,0 +1,8 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Note: Starting simulation
+Time: 0 ps  Iteration: 0  Process: /tb_fir_filter/STIMULI  File: /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.srcs/sim_1/new/tb_fir_filter.vhd
+Note: Starting simulation
+Time: 410 ns  Iteration: 0  Process: /tb_fir_filter/STIMULI  File: /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.srcs/sim_1/new/tb_fir_filter.vhd
+Note: Starting simulation
+Time: 830 ns  Iteration: 0  Process: /tb_fir_filter/STIMULI  File: /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.srcs/sim_1/new/tb_fir_filter.vhd

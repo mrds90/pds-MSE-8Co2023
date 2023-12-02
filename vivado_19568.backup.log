@@ -2,10 +2,10 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sat Dec  2 16:58:44 2023
-# Process ID: 17220
+# Start of session at: Sat Dec  2 16:50:23 2023
+# Process ID: 19568
 # Current directory: D:/PersonalCloud/MSE/PDS/TP_Final/pds-MSE-8Co2023
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16604 D:\PersonalCloud\MSE\PDS\TP_Final\pds-MSE-8Co2023\PDS_Test.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13924 D:\PersonalCloud\MSE\PDS\TP_Final\pds-MSE-8Co2023\PDS_Test.xpr
 # Log file: D:/PersonalCloud/MSE/PDS/TP_Final/pds-MSE-8Co2023/vivado.log
 # Journal file: D:/PersonalCloud/MSE/PDS/TP_Final/pds-MSE-8Co2023\vivado.jou
 #-----------------------------------------------------------
@@ -17,7 +17,8 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2020.2/data/ip'.
-open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:05 . Memory (MB): peak = 1108.820 ; gain = 0.000
-update_compile_order -fileset sources_1
+open_project: Time (s): cpu = 00:00:13 ; elapsed = 00:00:05 . Memory (MB): peak = 1107.734 ; gain = 0.000
 exit
-INFO: [Common 17-206] Exiting Vivado at Sat Dec  2 17:00:41 2023...
+ERROR: [Vivado 12-106] *** Exception: java.lang.NullPointerException (See D:/PersonalCloud/MSE/PDS/TP_Final/pds-MSE-8Co2023/vivado_pid19568.debug)
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting Vivado at Sat Dec  2 16:50:46 2023...

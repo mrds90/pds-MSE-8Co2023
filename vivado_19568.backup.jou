@@ -2,13 +2,12 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sat Dec  2 16:58:44 2023
-# Process ID: 17220
+# Start of session at: Sat Dec  2 16:50:23 2023
+# Process ID: 19568
 # Current directory: D:/PersonalCloud/MSE/PDS/TP_Final/pds-MSE-8Co2023
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16604 D:\PersonalCloud\MSE\PDS\TP_Final\pds-MSE-8Co2023\PDS_Test.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13924 D:\PersonalCloud\MSE\PDS\TP_Final\pds-MSE-8Co2023\PDS_Test.xpr
 # Log file: D:/PersonalCloud/MSE/PDS/TP_Final/pds-MSE-8Co2023/vivado.log
 # Journal file: D:/PersonalCloud/MSE/PDS/TP_Final/pds-MSE-8Co2023\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project D:/PersonalCloud/MSE/PDS/TP_Final/pds-MSE-8Co2023/PDS_Test.xpr
-update_compile_order -fileset sources_1

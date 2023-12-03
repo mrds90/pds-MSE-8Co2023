@@ -23,6 +23,7 @@ sin_signal = 0.5 * (sin_signal1 + sin_signal3)
 async def moving_average(dut):
     salida_fir = list()
     fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+    ax1.set_title("FIR Media Movil")
     ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
     ax2.grid(True, which='both', linestyle='--', linewidth=0.5)
     ax1.plot(time,sin_signal.astype(int)/2**7)
@@ -47,6 +48,7 @@ async def moving_average(dut):
 async def low_pass(dut):
     salida_fir = list()
     fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+    ax1.set_title("FIR PasaBajos")
     ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
     ax2.grid(True, which='both', linestyle='--', linewidth=0.5)
     ax1.plot(time,sin_signal.astype(int)/2**7)
@@ -66,13 +68,13 @@ async def low_pass(dut):
             print(e)
         await Timer(2, units="ns")
     ax2.plot(time[count:len(time)],salida_fir)
-
     plt.show()
 
 @cocotb.test()    
 async def high_pass(dut):
     salida_fir = list()
     fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+    ax1.set_title("FIR Pasa Altos")
     ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
     ax2.grid(True, which='both', linestyle='--', linewidth=0.5)
     ax1.plot(time,sin_signal.astype(int)/2**7)
@@ -91,5 +93,4 @@ async def high_pass(dut):
             print(e)
         await Timer(2, units="ns")
     ax2.plot(time[count:len(time)],salida_fir)
-
     plt.show()

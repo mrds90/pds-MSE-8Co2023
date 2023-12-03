@@ -15,8 +15,8 @@ use ieee.numeric_std.all;
 entity filtro_fir_cadena is
   generic
   (
-    N : positive := 16; -- Tamaño configurable
-    M : positive := 4  -- Número de componentes FIR en la cadena
+    N : positive := 8; -- Tamaño configurable
+    M : positive := 5  -- Número de componentes FIR en la cadena
   );
   port
   (

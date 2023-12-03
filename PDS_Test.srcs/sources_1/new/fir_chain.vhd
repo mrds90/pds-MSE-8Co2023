@@ -16,7 +16,7 @@ entity filtro_fir_cadena is
   generic
   (
     N : positive := 8; -- Tamaño configurable
-    M : positive := 5  -- Número de componentes FIR en la cadena
+    M : positive := 17  -- Número de componentes FIR en la cadena
   );
   port
   (

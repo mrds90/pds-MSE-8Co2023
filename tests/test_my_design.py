@@ -29,7 +29,7 @@ async def moving_average(dut):
     ax1.plot(time,sin_signal.astype(int)/2**7)
     clock = Clock(dut.clk, 4, "ns")
     cocotb.start_soon(clock.start())
-    dut.coeficientes.value = 0x07070707070707070707070707
+    dut.coeficientes.value = 0x0707070707070707070707070707070707
     await Timer(1, units="ns")
     count = 0
     for cycle in range(samples):

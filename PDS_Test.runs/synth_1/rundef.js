@@ -27,7 +27,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log MiComponente.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MiComponente.tcl" );
+         "-log filtro_fir_cadena.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source filtro_fir_cadena.tcl" );
 
 
 

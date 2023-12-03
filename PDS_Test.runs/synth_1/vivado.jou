@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sun Nov 12 19:45:44 2023
-# Process ID: 12568
-# Current directory: /home/marcos/Repositorios/PDS_Test/PDS_Test.runs/synth_1
-# Command line: vivado -log MiComponente.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source MiComponente.tcl
-# Log file: /home/marcos/Repositorios/PDS_Test/PDS_Test.runs/synth_1/MiComponente.vds
-# Journal file: /home/marcos/Repositorios/PDS_Test/PDS_Test.runs/synth_1/vivado.jou
+# Start of session at: Sun Dec  3 20:16:04 2023
+# Process ID: 134538
+# Current directory: /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.runs/synth_1
+# Command line: vivado -log filtro_fir_cadena.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source filtro_fir_cadena.tcl
+# Log file: /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.runs/synth_1/filtro_fir_cadena.vds
+# Journal file: /home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
-source MiComponente.tcl -notrace
+source filtro_fir_cadena.tcl -notrace

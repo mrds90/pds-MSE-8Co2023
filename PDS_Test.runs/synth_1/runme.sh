@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/marcos/Repositorios/PDS_Test/PDS_Test.runs/synth_1'
+HD_PWD='/home/marcos/Repositorios/pds-MSE-8Co2023/PDS_Test.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log MiComponente.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MiComponente.tcl
+EAStep vivado -log filtro_fir_cadena.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source filtro_fir_cadena.tcl

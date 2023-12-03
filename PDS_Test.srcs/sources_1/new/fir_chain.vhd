@@ -1,22 +1,14 @@
---library ieee;
---use ieee.std_logic_1164.all;
---use ieee.numeric_std.all;
-
---package bus_multiplexer_pkg is
---    constant N : natural := 4;
---    type bus_array is array(natural range <>) of std_logic_vector(N to 0);
---end package;
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use IEEE.math_real.all;
 --use work.bus_multiplexer_pkg.all;
 
 entity filtro_fir_cadena is
   generic
   (
     N : positive := 8; -- Tamaño configurable
-    M : positive := 17  -- Número de componentes FIR en la cadena
+    M : positive := 20  -- Número de componentes FIR en la cadena
   );
   port
   (
@@ -24,7 +16,8 @@ entity filtro_fir_cadena is
     rst     : in STD_LOGIC; -- Reset asincrónico
     entrada : in STD_LOGIC_VECTOR(N - 1 downto 0); -- Señal de entrada común
     coeficientes : in STD_LOGIC_VECTOR(N*M -1 downto 0);
-    salida  : out STD_LOGIC_VECTOR(N - 1 downto 0) -- Salida del componente TOP
+    salida  : out STD_LOGIC_VECTOR(N - 1 downto 0); -- Salida del componente TOP
+    orden : in STD_LOGIC_VECTOR(integer(ceil(log2(real(M)))) - 1 downto 0)
   );
 end filtro_fir_cadena;
 
@@ -72,6 +65,6 @@ begin
   end generate;
 
   -- Salida del componente TOP
-  salida <= salida_final(N*M-1 downto N*(M-1));
+  salida <= salida_final(N*(TO_INTEGER(unsigned(orden)))-1 downto N*((TO_INTEGER(unsigned(orden)))-1));
 
 end Behavioral;

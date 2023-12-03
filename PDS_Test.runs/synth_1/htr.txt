@@ -6,4 +6,4 @@
 # Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 #
 
-vivado -log MiComponente.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MiComponente.tcl
+vivado -log filtro_fir_cadena.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source filtro_fir_cadena.tcl

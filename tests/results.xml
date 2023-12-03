@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1701646688" />
+    <testcase name="moving_average" classname="test_my_design" file="/home/marcos/Repositorios/pds-MSE-8Co2023/tests/test_my_design.py" lineno="22" time="21.305965662002563" sim_time_ns="20001.000001" ratio_time="938.7511609797691" />
+  </testsuite>
+</testsuites>

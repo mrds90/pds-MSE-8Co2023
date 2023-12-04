@@ -7,8 +7,8 @@ use IEEE.math_real.all;
 entity filtro_fir_cadena is
   generic
   (
-    N : positive := 8; -- Tamaño configurable
-    M : positive := 4  -- Número de componentes FIR en la cadena
+    N : positive := 32; -- Tamaño configurable
+    M : positive := 20  -- Número de componentes FIR en la cadena
   );
   port
   (
@@ -65,7 +65,7 @@ begin
       );
   end generate;
 
-  x_nometa <= std_logic_vector(TO_UNSIGNED(M,INTEGER(ceil(log2(real(M)))))) when Is_X(orden) else orden;
+  x_nometa <= std_logic_vector(TO_UNSIGNED(M,INTEGER(ceil(log2(real(M + 1)))))) when Is_X(orden) else orden;
   -- Salida del componente TOP
   salida <= salida_final(N*(TO_INTEGER(UNSIGNED(x_nometa)))-1 downto N*((TO_INTEGER(UNSIGNED(x_nometa)))-1));
 

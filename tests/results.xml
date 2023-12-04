@@ -1,0 +1,9 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1701727394" />
+    <testcase name="moving_average_order17" classname="test_my_design" file="/home/marcos/Repositorios/pds-MSE-8Co2023/tests/test_my_design.py" lineno="22" time="31.598492860794067" sim_time_ns="20001.000001" ratio_time="632.9732272078174" />
+    <testcase name="moving_average_order5" classname="test_my_design" file="/home/marcos/Repositorios/pds-MSE-8Co2023/tests/test_my_design.py" lineno="53" time="59.84959864616394" sim_time_ns="20001.000001" ratio_time="334.1877047371305" />
+    <testcase name="low_pass" classname="test_my_design" file="/home/marcos/Repositorios/pds-MSE-8Co2023/tests/test_my_design.py" lineno="80" time="35.417884349823" sim_time_ns="20001.000001" ratio_time="564.7147018565482" />
+    <testcase name="high_pass" classname="test_my_design" file="/home/marcos/Repositorios/pds-MSE-8Co2023/tests/test_my_design.py" lineno="106" time="33.74237847328186" sim_time_ns="20001.000001" ratio_time="592.7560802163765" />
+  </testsuite>
+</testsuites>

@@ -20,22 +20,21 @@ sin_signal = 0.5 * (sin_signal1 + sin_signal3)
 #     print(f'0x{coef[i]:02X} ')
 
 @cocotb.test()
-async def moving_average(dut):
+async def moving_average_order17(dut):
     salida_fir = list()
     fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
-    ax1.set_title("FIR Media Movil")
+    ax1.set_title("FIR Media Movil Orden 17")
     ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
     ax2.grid(True, which='both', linestyle='--', linewidth=0.5)
     ax1.plot(time,sin_signal.astype(int)/2**7)
     dut.orden.value = 17
-    dut.coeficientes.value = 0x0707070707070707070707070707070707000000
+    dut.coeficientes.value = 0x0707070707070707070707070707070707
     
     clock = Clock(dut.clk, 4, "ns")
     cocotb.start_soon(clock.start())
     await Timer(1, units="ns")
     count = 0
     for cycle in range(samples):
-        dut.orden.value = 17
         dut.rst.value = 0
         dut.entrada.value = int(sin_signal[cycle])
         try:
@@ -47,53 +46,82 @@ async def moving_average(dut):
     ax2.plot(time[count:len(time)],salida_fir)
     plt.show()
 
-# @cocotb.test()    
-# async def low_pass(dut):
-#     salida_fir = list()
-#     fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
-#     ax1.set_title("FIR PasaBajos")
-#     ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
-#     ax2.grid(True, which='both', linestyle='--', linewidth=0.5)
-#     ax1.plot(time,sin_signal.astype(int)/2**7)
-#     clock = Clock(dut.clk, 4, "ns")
-#     cocotb.start_soon(clock.start())
-#     # dut.coeficientes.value = 0x011C451C01
-#     dut.coeficientes.value = 0x0000FFFDFD03112026201103FDFDFF0000
-#     await Timer(1, units="ns")
-#     count = 0
-#     for cycle in range(samples):
-#         dut.rst.value = 0
-#         dut.entrada.value = int(sin_signal[cycle])
-#         try:
-#             salida_fir.append(dut.salida.value.signed_integer/127.0)
-#         except Exception as e:
-#             count+=1
-#             print(e)
-#         await Timer(2, units="ns")
-#     ax2.plot(time[count:len(time)],salida_fir)
-#     plt.show()
+@cocotb.test()
+async def moving_average_order5(dut):
+    salida_fir = list()
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+    ax1.set_title("FIR Media Movil Orden 5")
+    ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
+    ax2.grid(True, which='both', linestyle='--', linewidth=0.5)
+    ax1.plot(time,sin_signal.astype(int)/2**7)
+    dut.orden.value = 5
+    dut.coeficientes.value = 0x1919191919
+    
+    clock = Clock(dut.clk, 4, "ns")
+    cocotb.start_soon(clock.start())
+    await Timer(1, units="ns")
+    count = 0
+    for cycle in range(samples):
+        dut.rst.value = 0
+        dut.entrada.value = int(sin_signal[cycle])
+        try:
+            salida_fir.append(dut.salida.value.signed_integer/127.0)
+        except Exception as e:
+            count+=1
+            print(e)
+        await Timer(2, units="ns")
+    ax2.plot(time[count:len(time)],salida_fir)
+    plt.show()
 
-# @cocotb.test()    
-# async def high_pass(dut):
-#     salida_fir = list()
-#     fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
-#     ax1.set_title("FIR Pasa Altos")
-#     ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
-#     ax2.grid(True, which='both', linestyle='--', linewidth=0.5)
-#     ax1.plot(time,sin_signal.astype(int)/2**7)
-#     clock = Clock(dut.clk, 4, "ns")
-#     cocotb.start_soon(clock.start())
-#     dut.coeficientes.value = 0x0000010303FDEFE05AE0EFFD0303010000
-#     await Timer(1, units="ns")
-#     count = 0
-#     for cycle in range(samples):
-#         dut.rst.value = 0
-#         dut.entrada.value = int(sin_signal[cycle])
-#         try:
-#             salida_fir.append(dut.salida.value.signed_integer/127.0)
-#         except Exception as e:
-#             count+=1
-#             print(e)
-#         await Timer(2, units="ns")
-#     ax2.plot(time[count:len(time)],salida_fir)
-#     plt.show()
+@cocotb.test()    
+async def low_pass(dut):
+    salida_fir = list()
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+    ax1.set_title("FIR PasaBajos")
+    ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
+    ax2.grid(True, which='both', linestyle='--', linewidth=0.5)
+    ax1.plot(time,sin_signal.astype(int)/2**7)
+    dut.orden.value = 17
+    clock = Clock(dut.clk, 4, "ns")
+    cocotb.start_soon(clock.start())
+    # dut.coeficientes.value = 0x011C451C01
+    dut.coeficientes.value = 0x0000FFFDFD03112026201103FDFDFF0000
+    await Timer(1, units="ns")
+    count = 0
+    for cycle in range(samples):
+        dut.rst.value = 0
+        dut.entrada.value = int(sin_signal[cycle])
+        try:
+            salida_fir.append(dut.salida.value.signed_integer/127.0)
+        except Exception as e:
+            count+=1
+            print(e)
+        await Timer(2, units="ns")
+    ax2.plot(time[count:len(time)],salida_fir)
+    plt.show()
+
+@cocotb.test()    
+async def high_pass(dut):
+    salida_fir = list()
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+    ax1.set_title("FIR Pasa Altos")
+    ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
+    ax2.grid(True, which='both', linestyle='--', linewidth=0.5)
+    ax1.plot(time,sin_signal.astype(int)/2**7)
+    dut.orden.value = 17
+    clock = Clock(dut.clk, 4, "ns")
+    cocotb.start_soon(clock.start())
+    dut.coeficientes.value = 0x0000010303FDEFE05AE0EFFD0303010000
+    await Timer(1, units="ns")
+    count = 0
+    for cycle in range(samples):
+        dut.rst.value = 0
+        dut.entrada.value = int(sin_signal[cycle])
+        try:
+            salida_fir.append(dut.salida.value.signed_integer/127.0)
+        except Exception as e:
+            count+=1
+            print(e)
+        await Timer(2, units="ns")
+    ax2.plot(time[count:len(time)],salida_fir)
+    plt.show()

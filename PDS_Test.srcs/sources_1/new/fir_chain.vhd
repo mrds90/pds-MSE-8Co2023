@@ -27,6 +27,7 @@ architecture Behavioral of filtro_fir_cadena is
   signal sumando_intermedio : STD_LOGIC_VECTOR(N*(M+1)-1 downto 0) := (others => '0');
   signal salida_sin_delay_s : STD_LOGIC_VECTOR(N*(M+1)-1 downto 0) := (others => '0');
   signal salida_final:        STD_LOGIC_VECTOR(N*M -1 downto 0)    := (others => '0');
+  signal x_nometa:          STD_LOGIC_VECTOR(integer(ceil(log2(real(M)))) - 1 downto 0) := std_logic_vector(TO_UNSIGNED(M,INTEGER(ceil(log2(real(M))))));
 
   -- Declarar instancias de los componentes FIR
   component fir_core
@@ -64,7 +65,8 @@ begin
       );
   end generate;
 
+  x_nometa <= std_logic_vector(TO_UNSIGNED(M,INTEGER(ceil(log2(real(M)))))) when Is_X(orden) else orden;
   -- Salida del componente TOP
-  salida <= salida_final(N*(TO_INTEGER(unsigned(orden)))-1 downto N*((TO_INTEGER(unsigned(orden)))-1));
+  salida <= salida_final(N*(TO_INTEGER(UNSIGNED(x_nometa)))-1 downto N*((TO_INTEGER(UNSIGNED(x_nometa)))-1));
 
 end Behavioral;

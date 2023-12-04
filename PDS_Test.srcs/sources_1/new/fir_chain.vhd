@@ -8,7 +8,7 @@ entity filtro_fir_cadena is
   generic
   (
     N : positive := 8; -- Tamaño configurable
-    M : positive := 20  -- Número de componentes FIR en la cadena
+    M : positive := 4  -- Número de componentes FIR en la cadena
   );
   port
   (
@@ -17,7 +17,7 @@ entity filtro_fir_cadena is
     entrada : in STD_LOGIC_VECTOR(N - 1 downto 0); -- Señal de entrada común
     coeficientes : in STD_LOGIC_VECTOR(N*M -1 downto 0);
     salida  : out STD_LOGIC_VECTOR(N - 1 downto 0); -- Salida del componente TOP
-    orden : in STD_LOGIC_VECTOR(integer(ceil(log2(real(M)))) - 1 downto 0)
+    orden : in STD_LOGIC_VECTOR(integer(ceil(log2(real(M+1)))) - 1 downto 0)
   );
 end filtro_fir_cadena;
 
@@ -27,7 +27,7 @@ architecture Behavioral of filtro_fir_cadena is
   signal sumando_intermedio : STD_LOGIC_VECTOR(N*(M+1)-1 downto 0) := (others => '0');
   signal salida_sin_delay_s : STD_LOGIC_VECTOR(N*(M+1)-1 downto 0) := (others => '0');
   signal salida_final:        STD_LOGIC_VECTOR(N*M -1 downto 0)    := (others => '0');
-  signal x_nometa:          STD_LOGIC_VECTOR(integer(ceil(log2(real(M)))) - 1 downto 0) := std_logic_vector(TO_UNSIGNED(M,INTEGER(ceil(log2(real(M))))));
+  signal x_nometa:          STD_LOGIC_VECTOR(integer(ceil(log2(real(M+1)))) - 1 downto 0) := std_logic_vector(TO_UNSIGNED(M,INTEGER(ceil(log2(real(M+1))))));
 
   -- Declarar instancias de los componentes FIR
   component fir_core

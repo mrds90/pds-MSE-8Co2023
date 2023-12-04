@@ -35,8 +35,12 @@ async def moving_average_order17(dut):
     await Timer(1, units="ns")
     count = 0
     for cycle in range(samples):
-        dut.rst.value = 0
+        
         dut.entrada.value = int(sin_signal[cycle])
+        if(cycle > samples/2):
+            dut.rst.value = 1
+        else:
+            dut.rst.value = 0
         try:
             salida_fir.append(dut.salida.value.signed_integer/127.0)
         except Exception as e:
@@ -84,7 +88,6 @@ async def low_pass(dut):
     dut.orden.value = 17
     clock = Clock(dut.clk, 4, "ns")
     cocotb.start_soon(clock.start())
-    # dut.coeficientes.value = 0x011C451C01
     dut.coeficientes.value = 0x0000FFFDFD03112026201103FDFDFF0000
     await Timer(1, units="ns")
     count = 0
